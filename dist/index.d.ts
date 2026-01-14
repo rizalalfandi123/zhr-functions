@@ -1337,9 +1337,7 @@ declare const workOrderProgressFormSchema: yup.ObjectSchema<{
     schedule: {
         id: string;
     };
-    raw_materials: {
-        quantity_used: number;
-    }[];
+    raw_materials: any[] | undefined;
     finish_goods: {
         quantity_packing?: number | undefined;
         packing?: {
@@ -1368,7 +1366,7 @@ declare const workOrderProgressFormSchema: yup.ObjectSchema<{
     schedule: {
         id: undefined;
     };
-    raw_materials: "";
+    raw_materials: undefined;
     finish_goods: "";
     scraps: "";
 }, "">;
@@ -1377,6 +1375,7 @@ declare const useWorkOrderProgressForm: (props?: UseFormProps<TWorkOrderProgress
 declare const useWorkOrderProgressScrapsForm: ({ control, ...options }: {
     control: Control<TWorkOrderProgressForm>;
 } & Partial<UseFieldArrayProps<{
+    raw_materials?: any[] | undefined;
     machine?: {
         id: string;
     } | undefined;
@@ -1391,9 +1390,6 @@ declare const useWorkOrderProgressScrapsForm: ({ control, ...options }: {
             id?: string | undefined;
         } | undefined;
         quantity: number;
-    }[];
-    raw_materials: {
-        quantity_used: number;
     }[];
     scraps: {
         quantity: number;
@@ -1410,6 +1406,7 @@ declare const useWorkOrderProgressScrapsForm: ({ control, ...options }: {
         id?: string | undefined;
     }[];
 }, "scraps">>) => react_hook_form.UseFieldArrayReturn<{
+    raw_materials?: any[] | undefined;
     machine?: {
         id: string;
     } | undefined;
@@ -1424,9 +1421,6 @@ declare const useWorkOrderProgressScrapsForm: ({ control, ...options }: {
             id?: string | undefined;
         } | undefined;
         quantity: number;
-    }[];
-    raw_materials: {
-        quantity_used: number;
     }[];
     scraps: {
         quantity: number;
@@ -2983,7 +2977,7 @@ type BillMaterialPhasesResponse = TResPagination<{
     };
     proportion: number;
 }>;
-declare const useMutationApiV1GetBillMaterialPhases: (options?: Omit<UseMutationOptions<AxiosResponse<BillMaterialPhasesResponse>, ResError$6, Record<string, unknown>>, 'mutationFn' | 'mutationKey'>) => _tanstack_react_query_build_legacy_types.UseMutationResult<AxiosResponse<BillMaterialPhasesResponse, any>, ResError$6, Record<string, unknown>, unknown>;
+declare const useMutationApiV1GetBillMaterialPhases: (options?: Omit<UseMutationOptions<AxiosResponse<BillMaterialPhasesResponse>, ResError$6, Record<string, unknown>>, 'mutationFn' | 'mutationKey'>) => _tanstack_react_query_build_legacy_types.UseMutationResult<AxiosResponse<BillMaterialPhasesResponse, any, {}>, ResError$6, Record<string, unknown>, unknown>;
 declare const useQueryApiV1GetBillMaterialPhases: (params: Record<string, unknown>, options?: Omit<UseQueryOptions<AxiosResponse<BillMaterialPhasesResponse>, ResError$6, BillMaterialPhasesResponse>, 'queryFn'>) => _tanstack_react_query_build_legacy_types.UseQueryResult<BillMaterialPhasesResponse, ResError$6>;
 
 type ResError$5 = AxiosError<TErrorAPIV3Res>;
@@ -3120,7 +3114,7 @@ declare const useMutationApiV1GetDefaultProductionPlans: (options?: Omit<UseMuta
     next_reference_number: string;
 }>, ResError$4>, 'mutationFn' | 'mutationKey'>) => _tanstack_react_query_build_legacy_types.UseMutationResult<AxiosResponse<{
     next_reference_number: string;
-}, any>, ResError$4, void, unknown>;
+}, any, {}>, ResError$4, void, unknown>;
 type TProductionPlans = {
     id: string;
     created: {
